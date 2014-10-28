@@ -5,7 +5,9 @@ chrome.tabs.query({active:true, currentWindow: true}, function(tabs){
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-
+	
+	var test = chrome.extension.getBackgroundPage();
+	console.log(test);
 	var button = document.getElementById('submit');
 	button.addEventListener("click", function(){
 
@@ -19,17 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		chrome.tabs.executeScript({code:"var link = document.createElement('link'); link.type = 'image/x-icon'; link.rel = 'shortcut icon'; link.href = '" + favicon + "'; document.getElementsByTagName('head')[0].insertBefore(link ,document.getElementsByTagName('head')[0].firstChild);"});
 		//doesn't work right now		
-		chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
-			if(tabId == currTab){
-				chrome.tabs.executeScript({code:"document.title = 'I crossed the browser';"});
-
-			}
-		
-		});
-
-
-	});
+		chrome.runtime.sendMessage(currTab);
 	
-
+	});
 });
 
