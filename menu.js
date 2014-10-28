@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		chrome.tabs.executeScript({code:"var link = document.createElement('link'); link.type = 'image/x-icon'; link.rel = 'shortcut icon'; link.href = '" + favicon + "'; document.getElementsByTagName('head')[0].insertBefore(link ,document.getElementsByTagName('head')[0].firstChild);"});
 		//doesn't work right now		
-		chrome.runtime.sendMessage(currTab);
+		chrome.runtime.sendMessage({tab:currTab, title:title, favicon:favicon});
 	
 	});
 });
