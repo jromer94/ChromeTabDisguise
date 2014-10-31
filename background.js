@@ -24,8 +24,11 @@ function tabListener(currId, title, favicon){
 
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
 	if(typeof message == "number"){
-		console.log("worked");
-		sendResponse("RESPONSE!");
+		if(tabIds.indexOf(message) != -1){
+			sendResponse(true);
+		}else {
+			sendResponse(false);
+		}
 	} else {
 		tabListener(message['tab'], message['title'], message['favicon']);
 		console.log("message recieved");
