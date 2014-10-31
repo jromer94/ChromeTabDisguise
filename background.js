@@ -18,7 +18,9 @@ function tabListener(currId, title, favicon){
 		});
 	} else {
 		chrome.tabs.onUpdated.removeListener(listeners[index]);
-			
+		listeners.splice(index, 1);
+		tabIds.splice(index, 1);
+		console.log("listener removed");		
 	}
 }
 

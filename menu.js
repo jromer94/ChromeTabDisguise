@@ -24,9 +24,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		console.log(test);
 		button.addEventListener("click", function(){
 
+			title = title.value;
+			favicon = favicon.value;
+
 			if(!title.disabled){
-				title = title.value;
-				favicon = favicon.value;
 				chrome.tabs.executeScript({code:"document.title = '" + title +"'"});
 				
 				chrome.tabs.executeScript({code:"console.log('hello'); var target = document.getElementsByTagName('title')[0]; console.log('hello'); var observer = new window.WebKitMutationObserver(function(mutations) {document.title='" + title + "'; console.log('changed title'); }); console.log('got here'); var config = {attributes:true, childList: true, characterData: true, subtree: true}; observer.observe(target, config);"});	
