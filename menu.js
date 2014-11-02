@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		var button = document.getElementById('submit');
 		var title = document.getElementById('titleform').elements['title'];
 		var favicon = document.getElementById('titleform').elements['favicon'];
-		var checkbox  = document.getElementById('titleform').elements['check'];
 
 		console.log(currTab);
 		chrome.runtime.sendMessage(currTab, function(response) {
@@ -34,9 +33,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 				chrome.tabs.executeScript({code:"var link = document.createElement('link'); link.type = 'image/x-icon'; link.rel = 'shortcut icon'; link.href = '" + favicon + "'; document.getElementsByTagName('head')[0].insertBefore(link ,document.getElementsByTagName('head')[0].firstChild);"});
 			}
-			if(checkbox.checked){
-				chrome.runtime.sendMessage({tab:currTab, title:title, favicon:favicon});
-			}
+			chrome.runtime.sendMessage({tab:currTab, title:title, favicon:favicon});
+			
 		});
 	});
 });
