@@ -1,4 +1,4 @@
 ChromeTabDisguise
 =================
 
-A simple tool to disguise Chrome Tabs
+A simple tool to disguise Chrome Tab's favicon and title.
